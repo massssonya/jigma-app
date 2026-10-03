@@ -6,11 +6,12 @@
 	"packageManager": "npm@12.2.0",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b && vite build && npm run create-spa-fallback",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit",
-		"test": "vitest run"
+		"test": "vitest run",
+		"create-spa-fallback": "node scripts/create-spa-fallback.mjs"
 	},
 	"dependencies": {
 		"react": "^19.2.8",

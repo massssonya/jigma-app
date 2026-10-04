@@ -1,5 +1,15 @@
-function App() {
-	return <>Jigma App</>;
-}
+import { Outlet } from "react-router-dom";
+import "./index.css";
+import { Providers } from "./providers";
 
-export default App;
+export function App() {
+	return (
+		<Providers>
+			<div className="app">
+				<main className="content">
+					<Outlet />
+				</main>
+			</div>
+		</Providers>
+	);
+}

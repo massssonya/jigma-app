@@ -9,36 +9,43 @@ import { EditorPage } from "@pages/EditorPage";
 import { HomePage } from "@pages/HomePage";
 import { LoginPage } from "@pages/LoginPage";
 import { NotFoundPage } from "@pages/NotFoundPage";
+import { WorkspaceLayout } from "@layouts/WorkspaceLayout/WorkspaceLayout";
+
+const punlicOnlyRoutes = {
+	element: <PublicOnlyRoute />,
+	children: [
+		{
+			path: "login",
+			element: <LoginPage />
+		}
+	]
+};
+
+const protectedRoutes = {
+	element: <ProtectedRoute />,
+	children: [
+		{
+			element: <WorkspaceLayout />,
+			children: [
+				{
+					index: true,
+					element: <HomePage />
+				},
+				{
+					path: "editor",
+					element: <EditorPage />
+				}
+			]
+		}
+	]
+};
 
 export const router = createBrowserRouter(
 	[
 		{
 			path: "/",
 			element: <App />,
-			children: [
-				{
-					element: <PublicOnlyRoute />,
-					children: [
-						{
-							path: "login",
-							element: <LoginPage />
-						}
-					]
-				},
-				{
-					element: <ProtectedRoute />,
-					children: [
-						{
-							index: true,
-							element: <HomePage />
-						},
-						{
-							path: "editor",
-							element: <EditorPage />
-						}
-					]
-				}
-			]
+			children: [punlicOnlyRoutes, protectedRoutes]
 		},
 		{
 			path: "*",

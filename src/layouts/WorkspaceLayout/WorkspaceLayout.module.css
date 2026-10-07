@@ -1,0 +1,32 @@
+.layout {
+	min-height: 100vh;
+}
+
+.sider {
+	user-select: none;
+}
+
+.logo {
+	height: 32px;
+	margin: 16px;
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0 24px;
+	background: #fff;
+}
+
+.avatar {
+	cursor: pointer;
+}
+
+.content {
+	margin: 24px;
+	min-height: 280px;
+}

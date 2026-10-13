@@ -1,9 +1,12 @@
 import { AuthProvider } from "@features/auth/AuthProvider";
+import { ThemeProvider } from "@features/theme/ThemeProvider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
 	return (
-		<AuthProvider>
-			{children}
-		</AuthProvider>
+		<ThemeProvider>
+			<AuthProvider>
+				{children}
+			</AuthProvider>
+		</ThemeProvider>
 	);
 }

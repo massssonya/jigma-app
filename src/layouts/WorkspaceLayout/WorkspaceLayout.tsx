@@ -4,15 +4,19 @@ import {
 	LogoutOutlined,
 	SettingOutlined,
 	HomeOutlined,
-	FolderOutlined
+	FolderOutlined,
+	SunFilled
 } from "@ant-design/icons";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
+
+import { useTheme } from "@features/theme/useTheme"
 
 import styles from "./WorkspaceLayout.module.css";
 
 const { Header, Sider, Content } = Layout;
 
 export function WorkspaceLayout() {
+	const {theme, toggleTheme} = useTheme()
 	const navigate = useNavigate();
 
 	const accountItems: MenuProps["items"] = [
@@ -53,7 +57,7 @@ export function WorkspaceLayout() {
 				</div>
 
 				<Menu
-					theme="light"
+					theme={theme}
 					mode="inline"
 					items={navigationItems}
 					onClick={({ key }) => navigate(key)}
@@ -62,6 +66,7 @@ export function WorkspaceLayout() {
 
 			<Layout>
 				<Header className={styles.header}>
+					<button onClick={() => toggleTheme()}><SunFilled style={{ fontSize: '24px' }} /></button>
 					<Dropdown
 						menu={{ items: accountItems }}
 						trigger={["click"]}

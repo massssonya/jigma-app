@@ -12,6 +12,13 @@
 	color: #fff;
 	font-size: 1.5rem;
 	font-weight: 600;
+
+	transition: transform 0.3s ease;
+	transform-origin: left center;
+}
+  
+:global(.ant-layout-sider-collapsed) .logo {
+	transform: scale(0.8);
 }
 
 .header {

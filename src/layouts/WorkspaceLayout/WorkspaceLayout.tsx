@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Avatar, Dropdown, Layout, Menu } from "antd";
 import type { MenuProps } from "antd";
 import {
@@ -8,11 +9,14 @@ import {
 } from "@ant-design/icons";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 
+import { NavigationSider } from "./NavigationSider"
+
 import styles from "./WorkspaceLayout.module.css";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 export function WorkspaceLayout() {
+	const [collapsed, setCollapsed] = useState(false);
 	const navigate = useNavigate();
 
 	const accountItems: MenuProps["items"] = [
@@ -32,34 +36,12 @@ export function WorkspaceLayout() {
 		}
 	];
 
-	const navigationItems: MenuProps["items"] = [
-		{
-			key: "/",
-			icon: <HomeOutlined />,
-			label: "Главная"
-		},
-		{
-			key: "/projects",
-			icon: <FolderOutlined />,
-			label: "Проекты"
-		}
-	];
-
 	return (
 		<Layout className={styles.layout}>
-			<Sider className={styles.sider}>
-				<div className={styles.logo}>
-					<NavLink to={"/"}>Jigma</NavLink>
-				</div>
-
-				<Menu
-					theme="light"
-					mode="inline"
-					items={navigationItems}
-					onClick={({ key }) => navigate(key)}
-				/>
-			</Sider>
-
+			<NavigationSider 
+				collapsed={collapsed} 
+				onCollapse={setCollapsed} 
+			/>
 			<Layout>
 				<Header className={styles.header}>
 					<Dropdown

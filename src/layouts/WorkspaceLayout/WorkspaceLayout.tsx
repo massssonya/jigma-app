@@ -46,7 +46,7 @@ export function WorkspaceLayout() {
 	];
 
 	return (
-		<Layout className={styles.layout}>
+		<Layout className={styles.layout} >
 			<Sider className={styles.sider}>
 				<div className={styles.logo}>
 					<NavLink to={"/"}>Jigma</NavLink>
@@ -73,7 +73,7 @@ export function WorkspaceLayout() {
 					</Dropdown>
 				</Header>
 
-				<Content className={styles.content}>
+				<Content className={styles.content} >
 					<Outlet />
 				</Content>
 			</Layout>
